@@ -1,4 +1,4 @@
-import { SectionHeader } from './ui/SectionHeader.jsx';
+import { SectionHeader } from "./ui/SectionHeader.jsx";
 
 export function PrecioDestacado() {
   return (
@@ -13,7 +13,20 @@ export function PrecioDestacado() {
           title="Precio destacado"
           subtitle="Un precio único, sin sorpresas. Incluye operador y combustible."
         />
-        <div className="mx-auto max-w-md rounded-2xl border-2 border-brand bg-white p-8 text-center shadow-md">
+        <div className="relative mx-auto max-w-md rounded-2xl bg-white p-8 text-center shadow-md">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 animate-border-beam rounded-2xl"
+            style={{
+              background:
+                'conic-gradient(from var(--angle), #FACC15 0deg, transparent 60deg, transparent 300deg, #FACC15 360deg)',
+              WebkitMask:
+                'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+              WebkitMaskComposite: 'xor',
+              maskComposite: 'exclude',
+              padding: '2px',
+            }}
+          />
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">
             Por jornada (8 h)
           </p>

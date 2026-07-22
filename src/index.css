@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-beam {
+  to {
+    --angle: 360deg;
+  }
+}
+
 @layer base {
   html {
     overflow-x: hidden;
