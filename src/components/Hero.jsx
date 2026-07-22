@@ -15,8 +15,8 @@ export function Hero() {
           id="hero-title"
           className="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl"
         >
-          Mové tierra sin complicarte.
-          <span className="block text-brand">Reservá en 60 segundos.</span>
+          Mueve tierra sin complicarte.
+          <span className="block text-brand">Reserva en 60 segundos.</span>
         </h1>
         <p className="mt-5 max-w-xl text-body text-gray-200">
           Servicio profesional con operador, entrega en obra y tarifa plana por jornada.

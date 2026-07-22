@@ -33,12 +33,12 @@ export function FormularioContacto() {
         setEstado({ tipo: 'success', mensaje: `¡Listo! Tu cita fue registrada (id #${resp.id}).` });
         setValores({ nombre: '', telefono: '', fecha: '' });
       } else {
-        setEstado({ tipo: 'error', mensaje: 'No pudimos registrar la cita. Intentá de nuevo.' });
+        setEstado({ tipo: 'error', mensaje: 'No pudimos registrar la cita. Intenta de nuevo.' });
       }
     } catch (err) {
       setEstado({
         tipo: 'error',
-        mensaje: err?.message || 'Error inesperado. Intentá de nuevo en unos minutos.',
+        mensaje: err?.message || 'Error inesperado. Intenta de nuevo en unos minutos.',
       });
     } finally {
       setEnviando(false);
@@ -53,7 +53,7 @@ export function FormularioContacto() {
     >
       <div className="mx-auto max-w-xl px-6">
         <SectionHeader
-          kicker="Reservá"
+          kicker="Reserva"
           title="Formulario de contacto"
           subtitle="Te respondemos en el día para confirmar disponibilidad."
           id="contacto-title"
