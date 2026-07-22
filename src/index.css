@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  :focus-visible {
+    outline: 4px solid #FACC15;
+    outline-offset: 2px;
+  }
+}

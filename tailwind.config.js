@@ -1,0 +1,24 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          DEFAULT: '#FACC15',
+          ink: '#0A0A0A',
+          paper: '#FFFFFF',
+        },
+        success: '#16A34A',
+        danger: '#DC2626',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        body: ['16px', { lineHeight: '1.6' }],
+      },
+    },
+  },
+  plugins: [],
+};
