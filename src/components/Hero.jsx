@@ -1,4 +1,6 @@
-import { PrimaryCta } from './ui/PrimaryCta.jsx';
+import { PrimaryCta } from "./ui/PrimaryCta.jsx";
+
+const HERO_IMG = "/img/hero-backhoe.png";
 
 export function Hero() {
   return (
@@ -6,8 +8,14 @@ export function Hero() {
       id="hero"
       aria-labelledby="hero-title"
       className="relative overflow-hidden bg-brand-ink text-white"
+      style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url(" + HERO_IMG + ")",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
-      <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+      <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-28">
         <p className="text-sm font-semibold uppercase tracking-wider text-brand">
           Alquiler de retroexcavadora
         </p>
@@ -24,8 +32,8 @@ export function Hero() {
         </p>
         <div className="mt-8">
           <PrimaryCta onClick={() => {
-            const target = document.getElementById('contacto');
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            const target = document.getElementById("contacto");
+            if (target) target.scrollIntoView({ behavior: "smooth" });
           }}>
             Reservar ahora
           </PrimaryCta>
