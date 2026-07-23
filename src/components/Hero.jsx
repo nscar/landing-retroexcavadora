@@ -4,7 +4,7 @@ import { useParallax } from "../hooks/useParallax.js";
 const HERO_IMG = "/img/hero-backhoe.png";
 
 export function Hero() {
-  const parallaxRef = useParallax(0.18);
+  const parallaxRef = useParallax(0.30);
 
   return (
     <section
