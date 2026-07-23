@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --angle-reverse {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-beam {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes border-beam-reverse {
+  to {
+    --angle-reverse: -360deg;
+  }
+}
+
 @layer base {
   html {
     overflow-x: hidden;
@@ -35,19 +59,12 @@
   }
 }
 
-/* Forzar animacion del border-beam - sobrescribe animation: none del paquete */
-[data-beam][data-active] {
-  animation-play-state: running !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
+  .animate-border-beam,
+  .animate-border-beam-reverse {
+    animation: none;
+  }
   .hero-parallax-bg {
     transform: none !important;
-  }
-  [data-beam][data-active],
-  [data-beam][data-active]::after,
-  [data-beam][data-active]::before {
-    animation: inherit !important;
-    animation-play-state: running !important;
   }
 }

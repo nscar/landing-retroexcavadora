@@ -18,6 +18,18 @@ export default {
       fontSize: {
         body: ['16px', { lineHeight: '1.6' }],
       },
+      animation: {
+        'border-beam': 'border-beam 2.5s linear infinite',
+        'border-beam-reverse': 'border-beam-reverse 3s linear infinite',
+      },
+      keyframes: {
+        'border-beam': {
+          to: { '--angle': '360deg' },
+        },
+        'border-beam-reverse': {
+          to: { '--angle-reverse': '-360deg' },
+        },
+      },
     },
   },
   plugins: [],

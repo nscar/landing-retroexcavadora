@@ -1,5 +1,4 @@
 import { SectionHeader } from "./ui/SectionHeader.jsx";
-import { BorderBeam } from "border-beam";
 
 export function PrecioDestacado() {
   return (
@@ -14,15 +13,41 @@ export function PrecioDestacado() {
           title="Precio destacado"
           subtitle="Un precio único, sin sorpresas. Incluye operador y combustible."
         />
-        <BorderBeam
-          size="md"
-          colorVariant="sunset"
-          theme="dark"
-          strength={0.95}
-          duration={2}
-          borderRadius={16}
-        >
-          <div className="rounded-2xl border-2 border-brand bg-white p-8 text-center shadow-md">
+        <div className="relative mx-auto max-w-md rounded-2xl bg-white p-8 text-center shadow-md">
+          {/* Borde base tenue (estatico) */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-2xl border border-brand/30"
+          />
+          {/* Haz de luz 1: amarillo, 2.5s, sentido horario */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 animate-border-beam rounded-2xl"
+            style={{
+              background:
+                'conic-gradient(from var(--angle), transparent 0deg, transparent 320deg, #FACC15 350deg, #FACC15 10deg, transparent 40deg, transparent 360deg)',
+              WebkitMask:
+                'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+              WebkitMaskComposite: 'xor',
+              maskComposite: 'exclude',
+              padding: '2px',
+            }}
+          />
+          {/* Haz de luz 2: negro, 3s, sentido antihorario */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 animate-border-beam-reverse rounded-2xl"
+            style={{
+              background:
+                'conic-gradient(from var(--angle-reverse), transparent 0deg, transparent 165deg, #0A0A0A 195deg, #0A0A0A 215deg, transparent 245deg, transparent 360deg)',
+              WebkitMask:
+                'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+              WebkitMaskComposite: 'xor',
+              maskComposite: 'exclude',
+              padding: '2px',
+            }}
+          />
+          <div className="relative">
             <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">
               Por jornada (8 h)
             </p>
@@ -31,7 +56,7 @@ export function PrecioDestacado() {
             </p>
             <p className="mt-2 text-sm text-gray-600">IVA incluido · CABA y GBA</p>
           </div>
-        </BorderBeam>
+        </div>
       </div>
     </section>
   );
