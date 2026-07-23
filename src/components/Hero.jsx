@@ -10,7 +10,7 @@ export function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="hero-parallax relative min-h-screen overflow-hidden bg-brand-ink text-white"
+      className="hero-parallax relative overflow-hidden bg-brand-ink text-white"
     >
       <div
         ref={parallaxRef}
@@ -20,7 +20,7 @@ export function Hero() {
             "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url(" + HERO_IMG + ")",
         }}
       />
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-20 sm:py-28">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:py-28">
         <p className="text-sm font-semibold uppercase tracking-wider text-brand">
           Alquiler de retroexcavadora
         </p>
