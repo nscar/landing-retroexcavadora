@@ -7,9 +7,10 @@ export function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="relative overflow-hidden bg-brand-ink text-white"
+      className="hero-parallax relative overflow-hidden bg-brand-ink text-white"
       style={{
-        backgroundImage: "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url(" + HERO_IMG + ")",
+        backgroundImage:
+          "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url(" + HERO_IMG + ")",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

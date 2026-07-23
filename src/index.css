@@ -8,9 +8,21 @@
   inherits: false;
 }
 
+@property --angle-reverse {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 @keyframes border-beam {
   to {
     --angle: 360deg;
+  }
+}
+
+@keyframes border-beam-reverse {
+  to {
+    --angle-reverse: -360deg;
   }
 }
 
@@ -25,5 +37,27 @@
   :focus-visible {
     outline: 4px solid #FACC15;
     outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .hero-parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-parallax {
+    background-attachment: scroll;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-border-beam,
+  .animate-border-beam-reverse {
+    animation: none;
   }
 }

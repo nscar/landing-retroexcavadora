@@ -20,10 +20,14 @@ export default {
       },
       animation: {
         'border-beam': 'border-beam 3s linear infinite',
+        'border-beam-reverse': 'border-beam-reverse 2.5s linear infinite',
       },
       keyframes: {
         'border-beam': {
           to: { '--angle': '360deg' },
+        },
+        'border-beam-reverse': {
+          to: { '--angle-reverse': '-360deg' },
         },
       },
     },
