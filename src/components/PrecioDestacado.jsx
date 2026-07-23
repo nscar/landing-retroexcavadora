@@ -19,13 +19,13 @@ export function PrecioDestacado() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 rounded-2xl border border-brand/30"
           />
-          {/* Haz de luz 1: amarillo, 2.5s, sentido horario */}
+          {/* Haz de luz 1: amarillo, 2.5s, sentido horario, sector 80deg */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 animate-border-beam rounded-2xl"
             style={{
               background:
-                'conic-gradient(from var(--angle), transparent 0deg, transparent 320deg, #FACC15 350deg, #FACC15 10deg, transparent 40deg, transparent 360deg)',
+                'conic-gradient(from var(--angle), transparent 0deg, transparent 280deg, #FACC15 300deg, #FACC15 20deg, transparent 40deg, transparent 360deg)',
               WebkitMask:
                 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
               WebkitMaskComposite: 'xor',
@@ -33,7 +33,7 @@ export function PrecioDestacado() {
               padding: '2px',
             }}
           />
-          {/* Haz de luz 2: negro, 3s, sentido antihorario */}
+          {/* Haz de luz 2: negro, 3s, sentido antihorario, sector 30deg */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 animate-border-beam-reverse rounded-2xl"
