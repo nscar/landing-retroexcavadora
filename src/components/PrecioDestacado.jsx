@@ -19,7 +19,7 @@ export function PrecioDestacado() {
           colorVariant="sunset"
           theme="dark"
           strength={0.95}
-          duration={2.5}
+          duration={2}
           borderRadius={16}
         >
           <div className="rounded-2xl border-2 border-brand bg-white p-8 text-center shadow-md">

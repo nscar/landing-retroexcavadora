@@ -35,11 +35,19 @@
   }
 }
 
+/* Forzar animacion del border-beam - sobrescribe animation: none del paquete */
+[data-beam][data-active] {
+  animation-play-state: running !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-parallax-bg {
     transform: none !important;
   }
-  [data-beam][data-active] {
+  [data-beam][data-active],
+  [data-beam][data-active]::after,
+  [data-beam][data-active]::before {
+    animation: inherit !important;
     animation-play-state: running !important;
   }
 }
