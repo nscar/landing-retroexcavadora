@@ -1,22 +1,26 @@
 import { PrimaryCta } from "./ui/PrimaryCta.jsx";
+import { useParallax } from "../hooks/useParallax.js";
 
 const HERO_IMG = "/img/hero-backhoe.png";
 
 export function Hero() {
+  const parallaxRef = useParallax(0.18);
+
   return (
     <section
       id="hero"
       aria-labelledby="hero-title"
       className="hero-parallax relative overflow-hidden bg-brand-ink text-white"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url(" + HERO_IMG + ")",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
     >
-      <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-28">
+      <div
+        ref={parallaxRef}
+        className="hero-parallax-bg"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url(" + HERO_IMG + ")",
+        }}
+      />
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:py-28">
         <p className="text-sm font-semibold uppercase tracking-wider text-brand">
           Alquiler de retroexcavadora
         </p>

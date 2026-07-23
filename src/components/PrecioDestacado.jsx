@@ -14,33 +14,42 @@ export function PrecioDestacado() {
           subtitle="Un precio único, sin sorpresas. Incluye operador y combustible."
         />
         <div className="relative mx-auto max-w-md rounded-2xl bg-white p-8 text-center shadow-md">
+          {/* Borde base tenue (estatico) */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-2xl border border-brand/20"
+          />
+          {/* Haz de luz 1: amarillo, 3s, sentido horario */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 animate-border-beam rounded-2xl"
             style={{
               background:
-                'conic-gradient(from var(--angle), #FACC15 0deg, transparent 60deg, transparent 300deg, #FACC15 360deg)',
+                'conic-gradient(from var(--angle), transparent 0deg, transparent 320deg, #FACC15 350deg, #FACC15 10deg, transparent 40deg, transparent 360deg)',
               WebkitMask:
                 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
               WebkitMaskComposite: 'xor',
               maskComposite: 'exclude',
               padding: '2px',
+              filter: 'blur(0.5px)',
             }}
           />
+          {/* Haz de luz 2: negro, 2.5s, sentido antihorario */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 animate-border-beam-reverse rounded-2xl"
             style={{
               background:
-                'conic-gradient(from var(--angle-reverse), #0A0A0A 0deg, transparent 90deg, transparent 270deg, #0A0A0A 360deg)',
+                'conic-gradient(from var(--angle-reverse), transparent 0deg, transparent 165deg, #0A0A0A 195deg, #0A0A0A 215deg, transparent 245deg, transparent 360deg)',
               WebkitMask:
                 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
               WebkitMaskComposite: 'xor',
               maskComposite: 'exclude',
-              padding: '4px',
+              padding: '2px',
+              filter: 'blur(0.3px)',
             }}
           />
-          <div className="relative rounded-2xl bg-white">
+          <div className="relative">
             <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">
               Por jornada (8 h)
             </p>
