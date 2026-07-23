@@ -2,30 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@property --angle-reverse {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes border-beam {
-  to {
-    --angle: 360deg;
-  }
-}
-
-@keyframes border-beam-reverse {
-  to {
-    --angle-reverse: -360deg;
-  }
-}
-
 @layer base {
   html {
     overflow-x: hidden;
@@ -60,10 +36,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-border-beam,
-  .animate-border-beam-reverse {
-    animation: none;
-  }
   .hero-parallax-bg {
     transform: none !important;
   }
