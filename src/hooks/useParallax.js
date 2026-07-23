@@ -15,7 +15,7 @@ export function useParallax(factor = 0.25) {
 
     function update() {
       const rect = el.getBoundingClientRect();
-      const offset = rect.top * factor;
+      const offset = -rect.top * factor;
       el.style.transform = "translate3d(0, " + offset.toFixed(2) + "px, 0)";
       ticking = false;
     }
