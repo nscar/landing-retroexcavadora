@@ -39,4 +39,7 @@
   .hero-parallax-bg {
     transform: none !important;
   }
+  [data-beam][data-active] {
+    animation-play-state: running !important;
+  }
 }
