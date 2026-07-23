@@ -19,13 +19,13 @@ export function PrecioDestacado() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 rounded-2xl border border-brand/30"
           />
-          {/* Haz de luz 1: amarillo, 2.5s, sentido horario, sector 120deg */}
+          {/* Haz de luz 1: amarillo con fade por alpha, sector 120deg */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 animate-border-beam rounded-2xl"
             style={{
               background:
-                'conic-gradient(from var(--angle), transparent 0deg, transparent 240deg, #FACC15 260deg, #FACC15 60deg, transparent 80deg, transparent 360deg)',
+                'conic-gradient(from var(--angle), rgba(250,204,21,0) 0deg, rgba(250,204,21,0) 230deg, rgba(250,204,21,0.4) 250deg, rgba(250,204,21,0.85) 268deg, #FACC15 285deg, #FACC15 75deg, rgba(250,204,21,0.85) 92deg, rgba(250,204,21,0.4) 110deg, rgba(250,204,21,0) 130deg, rgba(250,204,21,0) 360deg)',
               WebkitMask:
                 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
               WebkitMaskComposite: 'xor',
@@ -33,13 +33,13 @@ export function PrecioDestacado() {
               padding: '2px',
             }}
           />
-          {/* Haz de luz 2: negro, 3s, sentido antihorario, sector 30deg */}
+          {/* Haz de luz 2: negro con fade por alpha, sector 50deg */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 animate-border-beam-reverse rounded-2xl"
             style={{
               background:
-                'conic-gradient(from var(--angle-reverse), transparent 0deg, transparent 165deg, #0A0A0A 195deg, #0A0A0A 215deg, transparent 245deg, transparent 360deg)',
+                'conic-gradient(from var(--angle-reverse), rgba(10,10,10,0) 0deg, rgba(10,10,10,0) 155deg, rgba(10,10,10,0.5) 170deg, rgba(10,10,10,0.85) 182deg, #0A0A0A 195deg, #0A0A0A 215deg, rgba(10,10,10,0.85) 228deg, rgba(10,10,10,0.5) 240deg, rgba(10,10,10,0) 255deg, rgba(10,10,10,0) 360deg)',
               WebkitMask:
                 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
               WebkitMaskComposite: 'xor',
