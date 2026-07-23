@@ -8,21 +8,21 @@
   inherits: false;
 }
 
-@property --angle-reverse {
-  syntax: '<angle>';
-  initial-value: 0deg;
+@property --opacity {
+  syntax: '<number>';
+  initial-value: 0.5;
   inherits: false;
 }
 
-@keyframes border-beam {
+@keyframes price-rotate {
   to {
     --angle: 360deg;
   }
 }
 
-@keyframes border-beam-reverse {
+@keyframes price-opacity {
   to {
-    --angle-reverse: -360deg;
+    --opacity: 1;
   }
 }
 
@@ -41,6 +41,30 @@
 }
 
 @layer components {
+  .price-rainbow {
+    position: relative;
+    border-radius: 1rem;
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    --border-size: 0.3rem;
+    border: var(--border-size) dotted transparent;
+    background-image: linear-gradient(
+        to right,
+        rgb(255 255 255 / var(--opacity)),
+        rgb(255 255 255 / var(--opacity))
+      ),
+      conic-gradient(
+        from var(--angle),
+        #FACC15 0deg 90deg,
+        #FDE68A 90deg 180deg,
+        #0A0A0A 180deg 270deg,
+        #737373 270deg 360deg
+      );
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    animation: price-rotate 4s linear infinite, price-opacity 3s ease-in-out infinite alternate;
+  }
+
   .hero-parallax {
     position: relative;
     overflow: hidden;
@@ -60,8 +84,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-border-beam,
-  .animate-border-beam-reverse {
+  .price-rainbow {
     animation: none;
   }
   .hero-parallax-bg {
