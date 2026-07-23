@@ -19,13 +19,13 @@ export function PrecioDestacado() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 rounded-2xl border border-brand/30"
           />
-          {/* Haz de luz 1: amarillo, 2.5s, sentido horario, sector 80deg */}
+          {/* Haz de luz 1: amarillo, 2.5s, sentido horario, sector 120deg */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 animate-border-beam rounded-2xl"
             style={{
               background:
-                'conic-gradient(from var(--angle), transparent 0deg, transparent 280deg, #FACC15 300deg, #FACC15 20deg, transparent 40deg, transparent 360deg)',
+                'conic-gradient(from var(--angle), transparent 0deg, transparent 240deg, #FACC15 260deg, #FACC15 60deg, transparent 80deg, transparent 360deg)',
               WebkitMask:
                 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
               WebkitMaskComposite: 'xor',
