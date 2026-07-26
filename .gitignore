@@ -1,6 +1,9 @@
 node_modules
 dist
 .ssr-build
+.smoke-ssr-build
+.smoke-form-build
+.form-check-*
 .DS_Store
 *.local
 .env
