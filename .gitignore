@@ -1,5 +1,7 @@
 node_modules
 dist
+.ssr-build
 .DS_Store
 *.local
 .env
+# gh-pages deja una rama local llamada gh-pages; no la trackeamos aquí.
