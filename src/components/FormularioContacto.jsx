@@ -3,7 +3,7 @@ import { Campo } from './form/Campo.jsx';
 import { SubmitButton } from './form/SubmitButton.jsx';
 import { Feedback } from './form/Feedback.jsx';
 import { validarCita } from './form/validacion.js';
-import { crearCita } from '../services/citasService.js';
+import { sendContactEmail } from '../services/emailService.js';
 import { SectionHeader } from './ui/SectionHeader.jsx';
 
 const HOY = new Date().toISOString().slice(0, 10);
@@ -28,13 +28,13 @@ export function FormularioContacto() {
 
     setEnviando(true);
     try {
-      const resp = await crearCita(valores);
-      if (resp && resp.ok) {
-        setEstado({ tipo: 'success', mensaje: `¡Listo! Tu cita fue registrada (id #${resp.id}).` });
-        setValores({ nombre: '', telefono: '', fecha: '' });
-      } else {
-        setEstado({ tipo: 'error', mensaje: 'No pudimos registrar la cita. Intenta de nuevo.' });
-      }
+      await sendContactEmail({
+        name: valores.nombre,
+        phone: valores.telefono,
+        date: valores.fecha,
+      });
+      setEstado({ tipo: 'success', mensaje: '¡Listo! Tu mensaje fue enviado. Te contactaremos pronto.' });
+      setValores({ nombre: '', telefono: '', fecha: '' });
     } catch (err) {
       setEstado({
         tipo: 'error',
