@@ -5,14 +5,14 @@
 //   2) Los assets que <script>/<link> declaran existen y sirven con el
 //      content-type y tamaño esperados (sin 404 silencioso por SPA fallback).
 //   3) El HTML servido incluye title correcto y el mount point.
-//   4) El bundle JS contiene los strings clave de la app (Hero, FormularioContacto,
-//      citasService, etc.) — verifica que no estamos sirviendo un build viejo.
+//   4) El bundle JS contiene los strings clave de la app (emailjs, Hero,
+//      FormularioContacto, etc.) — verifica que no estamos sirviendo un build viejo.
 //   5) DOM SSR renderizado (landmarks 1/1/1, 4 secciones, h1, form con 3 inputs,
 //      inputmode=tel, submit button con min-h-[56px]). Esto reusa vite SSR de
 //      scripts/verify.cjs pero importando la lógica para no duplicar.
 //   6) Comportamiento del submit con datos válidos: aparece role="alert" con
-//      "citasService: backend no disponible fuera de modo dev" y el botón se
-//      re-habilita. (Reusa la lógica de scripts/_form_check.mjs.)
+//      "EmailJS: network error" y el botón se re-habilita. (Reusa la lógica
+//      de scripts/_form_check.mjs.)
 //
 // Pre-requisito: `pnpm preview --base /landing-retroexcavadora/ --port 4173`
 // corriendo. El script falla con código 2 si el server no responde.
@@ -103,16 +103,13 @@ console.log(`[smoke] <title>: ${JSON.stringify(title)}`);
 const jsAsset = assetResults.find((a) => a.path.endsWith('.js'));
 const jsText = await (await get(jsAsset.path)).body.toString('utf8');
 // Strings que deberían estar en el bundle minificado de la app.
-// (El nombre del componente FormularioContacto lo borra el minifier; usamos
-// marcadores del contrato observable: nombre del módulo del servicio, mensaje
-// exacto de rechazo, role=alert, e identificadores de los inputs.)
 const expectedStrings = [
-  'citasService',                                 // módulo importado por el form
-  'citasService: backend no disponible fuera de modo dev', // mensaje exacto de rechazo
+  'emailjs',                                      // SDK EmailJS importado por el form
   'role:"alert"',                                 // feedback accesible del form
   'inputMode',                                    // el form pasa inputMode="tel"
   'Nombre',                                       // label del input nombre
   'Fecha',                                        // label del input fecha
+  'Teléfono',                                     // label del input teléfono
 ];
 const missingStrings = expectedStrings.filter((s) => !jsText.includes(s));
 if (missingStrings.length) {
@@ -201,11 +198,11 @@ const formCheck = await (async () => {
     },
     plugins: [
       {
-        name: 'citas-shim-rewrite',
+        name: 'email-shim-rewrite',
         transform(_code, id) {
-          if (id.includes('services/citasService.js') || id.endsWith('citasService.js')) {
-            return `export function crearCita() {
-                      return Promise.reject(new Error('citasService: backend no disponible fuera de modo dev'));
+          if (id.includes('services/emailService.js') || id.endsWith('emailService.js')) {
+            return `export async function sendContactEmail() {
+                      throw new Error('EmailJS: network error');
                     }`;
           }
           return null;
@@ -269,7 +266,7 @@ const formCheck = await (async () => {
     ok: true,
     initial_alert_present: !!initialAlert,
     alert_text: alertEl ? alertEl.textContent.trim() : null,
-    exact: alertEl ? alertEl.textContent.includes('citasService: backend no disponible fuera de modo dev') : false,
+    exact: alertEl ? alertEl.textContent.includes('EmailJS: network error') : false,
     btn_disabled_after: btn ? btn.disabled : null,
   };
 })();

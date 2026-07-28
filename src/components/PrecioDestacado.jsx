@@ -1,6 +1,9 @@
 import { SectionHeader } from "./ui/SectionHeader.jsx";
+import { useTilt } from "../hooks/useTilt.js";
 
 export function PrecioDestacado() {
+  const tiltRef = useTilt({ maxAngle: 6, scale: 1.02 });
+
   return (
     <section
       id="precio"
@@ -15,6 +18,7 @@ export function PrecioDestacado() {
         />
         <div
           id="precio-title"
+          ref={tiltRef}
           className="price-rainbow relative mx-auto max-w-md p-10 text-center shadow-md"
         >
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">

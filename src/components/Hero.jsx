@@ -2,11 +2,12 @@ import { PrimaryCta } from "./ui/PrimaryCta.jsx";
 import { useParallax } from "../hooks/useParallax.js";
 
 // Vite no reescribe rutas absolutas dentro de strings JS, así que una URL
-// hardcodeada como "/img/hero-backhoe.png" apuntaría a la raíz del host
+// hardcodeada como "/img/..." apuntaría a la raíz del host
 // (https://user.github.io/img/...) y daría 404 al desplegar bajo
 // /landing-retroexcavadora/. import.meta.env.BASE_URL respeta la `base`
 // de vite.config.js tanto en dev como en build (incluyendo VITE_BASE_PATH
-// custom), por lo que la imagen se sirve siempre desde el prefijo correcto.
+// custom), por lo que los assets se sirven siempre desde el prefijo
+// correcto.
 const HERO_IMG = `${import.meta.env.BASE_URL}img/hero-backhoe.png`;
 
 export function Hero() {

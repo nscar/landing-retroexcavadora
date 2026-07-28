@@ -48,16 +48,17 @@ try {
       emptyOutDir: true,
       rollupOptions: { output: { format: 'es' } },
     },
-    // Plugin local: reemplaza ../services/citasService.js por un shim que
-    // rechaza como en PROD. El hook transform actúa al final, cuando el
-    // módulo ya está inlined en el bundle; ahí reescribimos su código.
+    // Plugin local: reemplaza ../services/emailService.js por un shim que
+    // rechaza simulando un error de red de EmailJS. El hook transform actúa
+    // al final, cuando el módulo ya está inlined en el bundle; ahí
+    // reescribimos su código.
     plugins: [
       {
-        name: 'citas-service-shim',
+        name: 'email-service-shim',
         transform(_code, id) {
-          if (id.includes('services/citasService.js') || id.endsWith('citasService.js')) {
-            return `export function crearCita() {
-                      return Promise.reject(new Error('citasService: backend no disponible fuera de modo dev'));
+          if (id.includes('services/emailService.js') || id.endsWith('emailService.js')) {
+            return `export async function sendContactEmail() {
+                      throw new Error('EmailJS: network error');
                     }`;
           }
           return null;
@@ -156,7 +157,7 @@ try {
     findings.after_submit.alert_present &&
     findings.after_submit.alert_role === 'alert' &&
     typeof findings.after_submit.alert_text === 'string' &&
-    findings.after_submit.alert_text.includes('backend no disponible') &&
+    findings.after_submit.alert_text.includes('EmailJS: network error') &&
     findings.after_submit.alert_classes.includes('border-danger') &&
     findings.after_submit.submit_button_disabled === false &&
     findings.after_submit.submit_button_text === 'Reservar cita';
