@@ -3,7 +3,7 @@ import { Icon } from './ui/Icon.jsx';
 
 const items = [
   { titulo: 'Operador certificado', desc: 'Personal con matrícula al día y experiencia en obra.' },
-  { titulo: 'Entrega en 24 h', desc: 'Llevamos la máquina a tu obra dentro de CABA y GBA.' },
+  { titulo: 'Entrega en 24 h', desc: 'Llevamos la máquina a tu obra en tu zona.' },
   { titulo: 'Combustible incluido', desc: 'Llegas, arrancas, devuelves. Sin cargos extra.' },
   { titulo: 'Tarifa plana', desc: 'Precio cerrado por jornada. Sin sorpresas.' },
 ];

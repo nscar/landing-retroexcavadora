@@ -28,7 +28,7 @@ export function Hero() {
       />
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:py-28">
         <p className="text-sm font-semibold uppercase tracking-wider text-brand">
-          Alquiler de retroexcavadora
+          Nahuel del Sur SPA — Alquiler de retroexcavadora
         </p>
         <h1
           id="hero-title"
@@ -38,8 +38,9 @@ export function Hero() {
           <span className="block text-brand">Reserva en 60 segundos.</span>
         </h1>
         <p className="mt-5 max-w-xl text-body text-gray-200">
-          Servicio profesional con operador, entrega en obra y tarifa plana por jornada.
-          Sin letra chica.
+          Servicio profesional con operador. Retroexcavadora disponible
+          con o sin martillo hidráulico, entrega en obra y tarifa plana por
+          jornada. Sin letra chica.
         </p>
         <div className="mt-8">
           <PrimaryCta onClick={() => {
