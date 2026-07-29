@@ -19,7 +19,7 @@ export function PrecioDestacado() {
         <div
           id="precio-title"
           ref={tiltRef}
-          className="price-rainbow relative mx-auto max-w-md p-10 text-center shadow-md"
+          className="precio-card mx-auto max-w-md p-10 text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">
             Tarifa
@@ -28,11 +28,6 @@ export function PrecioDestacado() {
             $35.000
           </p>
           <p className="mt-1 text-sm text-gray-600">por hora</p>
-          <hr className="my-4 border-gray-300" />
-          <p className="text-sm text-gray-600">
-            Jornada completa (8 h):{" "}
-            <span className="font-bold text-brand-ink">$280.000</span>
-          </p>
           <p className="mt-2 text-sm text-gray-600">IVA incluido</p>
         </div>
       </div>

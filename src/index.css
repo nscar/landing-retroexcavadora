@@ -2,30 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@property --opacity {
-  syntax: '<number>';
-  initial-value: 0.5;
-  inherits: false;
-}
-
-@keyframes price-rotate {
-  to {
-    --angle: 360deg;
-  }
-}
-
-@keyframes price-opacity {
-  to {
-    --opacity: 1;
-  }
-}
-
 @layer base {
   html {
     overflow-x: hidden;
@@ -41,30 +17,6 @@
 }
 
 @layer components {
-  .price-rainbow {
-    position: relative;
-    border-radius: 1rem;
-    background-color: #FFFFFF;
-    color: #0A0A0A;
-    --border-size: 0.3rem;
-    border: var(--border-size) dotted transparent;
-    background-image: linear-gradient(
-        to right,
-        rgb(255 255 255 / var(--opacity)),
-        rgb(255 255 255 / var(--opacity))
-      ),
-      conic-gradient(
-        from var(--angle),
-        #FACC15 0deg 90deg,
-        #FDE68A 90deg 180deg,
-        #0A0A0A 180deg 270deg,
-        #737373 270deg 360deg
-      );
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    animation: price-rotate 4s linear infinite, price-opacity 3s ease-in-out infinite alternate;
-  }
-
   .hero-parallax {
     position: relative;
     overflow: hidden;
@@ -81,13 +33,89 @@
     will-change: transform;
     z-index: 0;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .price-rainbow {
-    animation: none;
+  /* === Beneficio card =================================================== */
+  /* Card plano: borde fino gris, sombra sm estática, sin transformaciones.
+     La altura se iguala entre cards del grid vía .beneficios-grid. */
+  .beneficio-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;                       /* 16 px entre badge / título / desc */
+    padding: 1.5rem;                 /* 24 px */
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;       /* gray-200 */
+    border-radius: 0.75rem;          /* xl */
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* shadow-sm */
+    height: 100%;
   }
-  .hero-parallax-bg {
-    transform: none !important;
+
+  /* Badge redondo amarillo: acento único de marca por card.
+     Estático: sin translateZ, sin transform-style, sin conic-gradient. */
+  .beneficio-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;                     /* 48 px */
+    height: 3rem;                    /* 48 px */
+    background-color: #FACC15;       /* brand */
+    border-radius: 9999px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),   /* brillo superior */
+      inset 0 -1px 0 rgba(0, 0, 0, 0.06),        /* sombra inferior */
+      inset 0 0 0 1px rgba(253, 230, 138, 0.7),  /* hairline amarillo-300 */
+      0 1px 2px 0 rgb(0 0 0 / 0.05);             /* shadow-sm exterior */
+  }
+  .beneficio-badge__icon {
+    width: 1.25rem;                  /* 20 px */
+    height: 1.25rem;
+    color: #0A0A0A;                  /* brand-ink */
+  }
+
+  /* === Precio card — golden orbit ======================================== */
+  /* Card con tilt 3D (useTilt) + borde animado: un halo dorado que orbita
+     alrededor del borde usando un conic-gradient rotatorio. */
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .precio-card {
+    position: relative;
+    background-color: #FFFFFF;
+    border-radius: 0.75rem;          /* xl */
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* shadow-sm */
+  }
+
+  /* Borde animado via pseudo-elemento con máscara. El conic-gradient
+     rota continuamente creando un "golden orbit" sutil. */
+  .precio-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;                    /* grosor del borde animado */
+    background: conic-gradient(
+      from var(--angle),
+      #FACC15 0deg 60deg,
+      #EAB308 60deg 120deg,
+      #0A0A0A 120deg 180deg,
+      #EAB308 180deg 240deg,
+      #FACC15 240deg 300deg,
+      #EAB308 300deg 360deg
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: orbit 3s linear infinite;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  @keyframes orbit {
+    to { --angle: 360deg; }
   }
 }

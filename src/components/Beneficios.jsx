@@ -1,6 +1,5 @@
 import { SectionHeader } from './ui/SectionHeader.jsx';
 import { Icon } from './ui/Icon.jsx';
-import { useTilt } from '../hooks/useTilt.js';
 
 const items = [
   { titulo: 'Operador certificado', desc: 'Personal con matrícula al día y experiencia en obra.' },
@@ -9,16 +8,14 @@ const items = [
   { titulo: 'Tarifa plana', desc: 'Precio cerrado por jornada. Sin sorpresas.' },
 ];
 
-// Sub-componente para poder usar useTilt dentro de un .map().
+// Card de beneficio — render estático. Sin tilt 3D, sin rainbow animado,
+// sin draw-on ni respiración del ícono. La apariencia vive en
+// `.beneficio-card` / `.beneficio-badge` en `index.css`.
 function BeneficioCard({ titulo, desc }) {
-  const tiltRef = useTilt({ maxAngle: 6, scale: 1.03 });
   return (
-    <li
-      ref={tiltRef}
-      className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
-    >
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-brand text-brand-ink">
-        <Icon name="check" className="h-5 w-5" />
+    <li className="beneficio-card">
+      <span className="beneficio-badge" aria-hidden="true">
+        <Icon name="check" className="beneficio-badge__icon" />
       </span>
       <h3 className="text-lg font-bold text-brand-ink">{titulo}</h3>
       <p className="text-body text-gray-700">{desc}</p>
@@ -39,7 +36,7 @@ export function Beneficios() {
           title="Beneficios"
           id="beneficios-title"
         />
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((it) => (
             <BeneficioCard key={it.titulo} titulo={it.titulo} desc={it.desc} />
           ))}
