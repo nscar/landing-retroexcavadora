@@ -42,6 +42,9 @@ jobs:
           # Apunta al nombre del repo. Si renombras el repo en GitHub,
           # actualiza aquí el base path o crea un secret REPO_NAME.
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_EMAILJS_PUBLIC_KEY: BMO3GHp-dWccb6pFY
+          VITE_EMAILJS_SERVICE_ID: service_l4yvonn
+          VITE_EMAILJS_TEMPLATE_ID: template_wcu1ob2
         run: pnpm run build
 
       - name: Setup Pages
