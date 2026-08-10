@@ -2,11 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // Base path configurable vía VITE_BASE_PATH.
-// Por defecto usa '/landing-retroexcavadora/' que es la subruta esperada en
-// GitHub Pages cuando el repo se llama así. Para renombrar el repo o usar
-// Pages con dominio custom, exporta VITE_BASE_PATH antes de buildear
-// (por ejemplo: VITE_BASE_PATH=/mi-repo/ pnpm build).
-const base = process.env.VITE_BASE_PATH || '/landing-retroexcavadora/';
+// Por defecto usa '/' porque el sitio se sirve con dominio custom
+// (nahueldelsur.cl) en la raíz. Si vuelves a GitHub Pages en subruta
+// <usuario>.github.io/<repo>/, exporta VITE_BASE_PATH=/<repo>/ antes de buildear.
+const base = process.env.VITE_BASE_PATH || '/';
 
 export default defineConfig({
   base,
