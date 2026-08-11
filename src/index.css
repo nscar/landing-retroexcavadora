@@ -71,9 +71,10 @@
     color: #0A0A0A;                  /* brand-ink */
   }
 
-  /* === Precio card — golden orbit ======================================== */
-  /* Card con tilt 3D (useTilt) + borde animado: un halo dorado que orbita
-     alrededor del borde usando un conic-gradient rotatorio. */
+  /* === Precio card — golden orbit + floating effect ===================== */
+  /* Card con borde animado (halo dorado que orbita) y elevación Material:
+     sombra base pronunciada (shadow-xl) + hover con sombra aún más intensa
+     y translateY(-8px). Transiciones suaves, sin tocar layout/colores. */
 
   @property --angle {
     syntax: '<angle>';
@@ -85,7 +86,22 @@
     position: relative;
     background-color: #FFFFFF;
     border-radius: 0.75rem;          /* xl */
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* shadow-sm */
+    /* Sombra base pronunciada — equivalente a Tailwind shadow-xl,
+       con un extra de calidez para integrarse con el amarillo de marca. */
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.10),
+      0 10px 15px -3px rgb(0 0 0 / 0.10),
+      0 20px 25px -5px rgba(250, 204, 21, 0.08);
+  }
+
+  /* Elevación al hover: sombra más profunda + desplazamiento vertical.
+     El efecto imita un FAB de Material Design / Flutter Elevation. */
+  .precio-card--floating:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.14),
+      0 20px 25px -5px rgb(0 0 0 / 0.14),
+      0 25px 50px -12px rgba(250, 204, 21, 0.18);
   }
 
   /* Borde animado via pseudo-elemento con máscara. El conic-gradient
