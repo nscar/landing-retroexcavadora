@@ -7,7 +7,7 @@
 //   3) El HTML servido incluye title correcto y el mount point.
 //   4) El bundle JS contiene los strings clave de la app (emailjs, Hero,
 //      FormularioContacto, etc.) — verifica que no estamos sirviendo un build viejo.
-//   5) DOM SSR renderizado (landmarks 1/1/1, 4 secciones, h1, form con 3 inputs,
+//   5) DOM SSR renderizado (landmarks 1/1/1, 5 secciones, h1, form con 3 inputs,
 //      inputmode=tel, submit button con min-h-[56px]). Esto reusa vite SSR de
 //      scripts/verify.cjs pero importando la lógica para no duplicar.
 //   6) Comportamiento del submit con datos válidos: aparece role="alert" con
@@ -110,6 +110,8 @@ const expectedStrings = [
   'Nombre',                                       // label del input nombre
   'Fecha',                                        // label del input fecha
   'Teléfono',                                     // label del input teléfono
+  'Trabajos',                                     // título de la nueva sección
+  'trabajo-1',                                    // id de la primera imagen de la galería
 ];
 const missingStrings = expectedStrings.filter((s) => !jsText.includes(s));
 if (missingStrings.length) {
@@ -299,7 +301,7 @@ const checks = {
   no_404_in_served_assets: assetResults.every((a) => a.http !== 404),
   bundle_has_expected_strings: missingStrings.length === 0,
   landmarks_1_1_1: landmarks.header === 1 && landmarks.main === 1 && landmarks.footer === 1,
-  four_sections: sectionCount === 4,
+  four_sections: sectionCount === 5,
   h1_present: headings.h1 >= 1,
   form_present: !!form,
   form_3_inputs: inputs.length >= 3,

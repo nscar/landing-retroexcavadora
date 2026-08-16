@@ -53,7 +53,7 @@ const root = path.resolve(__dirname, '..');
     landmarks.header === 1 &&
     landmarks.main === 1 &&
     landmarks.footer === 1 &&
-    sections === 4 &&
+    sections === 5 &&
     headings.h1 === 1 &&
     headings.h2 >= 1 &&
     headings.h3 >= 1 &&
